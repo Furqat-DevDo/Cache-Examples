@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace InMemoryCache.Controllers;
 
@@ -6,6 +7,7 @@ namespace InMemoryCache.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
+    private readonly IMemoryCache _memoryCache;
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -13,9 +15,10 @@ public class WeatherForecastController : ControllerBase
 
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, IMemoryCache memoryCache)
     {
         _logger = logger;
+        _memoryCache = memoryCache;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
@@ -28,5 +31,20 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+
+    [HttpGet("FromCache")]
+    public IEnumerable<WeatherForecast> GetFromCache(string key)
+    {
+        var cachedValue = _memoryCache.GetOrCreate(
+        key,
+        cacheEntry =>
+        {
+            cacheEntry.SlidingExpiration = TimeSpan.FromSeconds(10);
+            cacheEntry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
+            
+            return Get();
+        });
+        return cachedValue;
     }
 }
