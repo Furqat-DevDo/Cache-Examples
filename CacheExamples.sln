@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryCache", "InMemoryCache\InMemoryCache.csproj", "{AA87E314-05B7-4FEE-9B41-96B592CC7167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCache", "NCache\NCache.csproj", "{0B927F55-282E-48C6-9DE4-310449E24DF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisCache", "RedisCache\RedisCache.csproj", "{94E36A3B-4814-4370-99F3-D2343EBB3B11}"
 EndProject
 Global
@@ -22,10 +20,6 @@ Global
 		{AA87E314-05B7-4FEE-9B41-96B592CC7167}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA87E314-05B7-4FEE-9B41-96B592CC7167}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA87E314-05B7-4FEE-9B41-96B592CC7167}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B927F55-282E-48C6-9DE4-310449E24DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B927F55-282E-48C6-9DE4-310449E24DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B927F55-282E-48C6-9DE4-310449E24DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B927F55-282E-48C6-9DE4-310449E24DF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94E36A3B-4814-4370-99F3-D2343EBB3B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94E36A3B-4814-4370-99F3-D2343EBB3B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94E36A3B-4814-4370-99F3-D2343EBB3B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
